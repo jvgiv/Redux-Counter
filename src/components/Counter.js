@@ -6,35 +6,69 @@ class Counter extends Component {
     incrementIfOdd = () => {
         // Stretch Problem: Implement an increment function that
         // only increments if the counter value is odd
+        // console.log(this.props.count % 2)
+        this.props.count % 2 !== 0 ? this.props.increment() : null
+        
     };
 
     incrementAsync = () => {
         // Stretch Problem: Implement an increment function that
         // increments after waiting for one second
+        
     };
 
     render() {
         // Fill in the two button onClick methods
         // Upon clicking these buttons, the count
         // should decrement or increment accordingly
+        const styledOutlineBox = {
+            border: '2px solid black',
+            width: '60%',
+            margin: '10px auto',
+            display: 'flex',
+            flexDirection: 'column',
+            textAlign: 'center',
+            borderRadius: '5px',
+            boxShadow: '5px 5px 5px #CCC'
+        }
+
+        const styledP = {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontWeight: 'bold',
+            fontSize: '30px',
+            margin: '12px'
+        }
+
+        const styledButton = {
+            width: '40%',
+            margin: '10px',
+            borderRadius: '5px',
+            fontWeight: 'bold',
+            boxShadow: '5px 5px 5px #CCC'
+        }
+
         return (
-            <p>
-                Clicked: {this.props.count} times
-                <button onClick={() => {/* Fill me in */ }}>
-                    +
-                </button>
-                <button onClick={() => {/* Fill me in */ }}>
-                    -
-                </button>
-                 {/* Uncomment these button tags if you got
-                around to implementing the extra credit functions */}
-                {/* <button onClick={this.incrementIfOdd}>
-                    Increment if odd
-                </button>
-                <button onClick={this.incrementAsync}>
-                    Increment async
-                </button>  */}
-            </p>
+            <div style={styledOutlineBox}>
+                <p style={styledP}>
+                    Clicked: {this.props.count} times
+                    <button style={styledButton} onClick={() => {this.props.increment()}}>
+                        +
+                    </button>
+                    <button style={styledButton} onClick={() => {this.props.decrement()}}>
+                        -
+                    </button>
+                    {/* Uncomment these button tags if you got
+                    around to implementing the extra credit functions */}
+                    <button style={styledButton} onClick={this.incrementIfOdd}>
+                        Increment if odd
+                        </button>
+                        <button style={styledButton} onClick={this.incrementAsync}>
+                        Increment async
+                    </button>  
+                </p>
+            </div>
         );
     }
 }
